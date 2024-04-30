@@ -9,10 +9,7 @@ export default function Footer() {
             <a href="https://github.com/maritocuate" target="_blank">
               💻 <strong>@marioquiroga</strong>
             </a>
-            <a
-              href="https://github.com/maritocuate/country-checkbox"
-              target="_blank"
-            >
+            <a href="https://github.com/maritocuate/pokedexapp" target="_blank">
               ⚙️ source
             </a>
           </div>
