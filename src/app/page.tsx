@@ -34,9 +34,9 @@ export default function Home() {
   // Add infinite scroll
   useEffect(() => {
     const handleScroll = () => {
-      const windowHeight = window.innerHeight
-      const scrollTop = document.documentElement.scrollTop
-      const offsetHeight = document.documentElement.offsetHeight
+      const windowHeight: number = window.innerHeight
+      const scrollTop: number = document.documentElement.scrollTop
+      const offsetHeight: number = document.documentElement.offsetHeight
 
       if (windowHeight + scrollTop !== offsetHeight) return
       fetchData(offset)
