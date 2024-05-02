@@ -1,18 +1,17 @@
 'use client'
 
-import { fetchPokemon } from '@/hooks/useFetchPokemon'
-import { useEffect, useState } from 'react'
-import { Box, Button, Container } from '@mui/material'
+import { useEffect, useState, useCallback } from 'react'
+import { Box, Container } from '@mui/material'
 import WithSearchBar from './components/Home/WithSearchBar'
 import ItemList from './components/Home/ItemList'
 import { PokemonResult } from '@/types'
-import { AddCircle } from '@mui/icons-material'
+import { fetchPokemon } from '@/hooks/useFetchPokemon'
 
 export default function Home() {
   const [pokemonList, setPokemonList] = useState<PokemonResult[] | []>([])
   const [offset, setOffset] = useState(0)
 
-  const fetchData = async (index: number) => {
+  const fetchData = useCallback(async (index: number) => {
     try {
       const data = await fetchPokemon(index)
       setPokemonList(prevList => [
@@ -26,11 +25,27 @@ export default function Home() {
     } catch (error) {
       console.error('Error fetching Pokemon:', error)
     }
-  }
+  }, [])
 
   useEffect(() => {
     fetchData(offset)
   }, [])
+
+  // Add infinite scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight
+      const scrollTop = document.documentElement.scrollTop
+      const offsetHeight = document.documentElement.offsetHeight
+
+      if (windowHeight + scrollTop !== offsetHeight) return
+      fetchData(offset)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [offset])
 
   return (
     <main>
@@ -43,21 +58,6 @@ export default function Home() {
           <WithSearchBar>
             <ItemList dataList={pokemonList} />
           </WithSearchBar>
-        )}
-
-        {offset && (
-          <Box className="flex justify-center my-5">
-            <Button
-              className="capitalize"
-              variant="contained"
-              size="large"
-              endIcon={<AddCircle />}
-              sx={{ borderRadius: '0 0 0.5rem 0.5rem' }}
-              onClick={() => fetchData(offset)}
-            >
-              Load More
-            </Button>
-          </Box>
         )}
       </Container>
     </main>
