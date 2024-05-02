@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Navbar from './components/Navbar'
-import './styles/globals.css'
+import './ui/globals.css'
 import { Box, ThemeProvider } from '@mui/material'
-import mainTheme from './styles/theme'
+import mainTheme from './ui/theme'
 import Footer from './components/Footer'
 
 export const metadata: Metadata = {

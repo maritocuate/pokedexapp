@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material'
 
-export default function Details() {
+export default function Page() {
   return (
     <Container maxWidth="md" sx={{ my: 4, minHeight: 'calc(100vh - 14rem)' }}>
       <Box component="section">
