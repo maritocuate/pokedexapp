@@ -9,21 +9,28 @@ import { PokemonResult } from '@/types'
 import { AddCircle } from '@mui/icons-material'
 
 export default function Home() {
-  const [nextPage, setNextPage] = useState<string | null>(null)
   const [pokemonList, setPokemonList] = useState<PokemonResult[] | []>([])
+  const [offset, setOffset] = useState(0)
+
+  const fetchData = async (index: number) => {
+    console.log('fetching -> ', index)
+    try {
+      const data = await fetchPokemon(index)
+      setPokemonList(prevList => [
+        ...prevList,
+        ...(data.results as PokemonResult[]),
+      ])
+
+      const urlParams = new URLSearchParams((data.next as string).split('?')[1])
+      const newOffset = urlParams.get('offset')
+      setOffset(Number(newOffset))
+    } catch (error) {
+      console.error('Error fetching Pokemon:', error)
+    }
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchPokemon(0)
-        setPokemonList(data.results as PokemonResult[])
-        setNextPage(data.next as string)
-      } catch (error) {
-        console.error('Error fetching Pokemon:', error)
-      }
-    }
-
-    fetchData()
+    fetchData(offset)
   }, [])
 
   return (
@@ -39,7 +46,7 @@ export default function Home() {
           </WithSearchBar>
         )}
 
-        {nextPage && (
+        {offset && (
           <Box className="flex justify-center my-5">
             <Button
               className="capitalize"
@@ -47,6 +54,7 @@ export default function Home() {
               size="large"
               endIcon={<AddCircle />}
               sx={{ borderRadius: '0 0 0.5rem 0.5rem' }}
+              onClick={() => fetchData(offset)}
             >
               Load More
             </Button>

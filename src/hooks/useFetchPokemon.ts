@@ -4,9 +4,9 @@ import { PokemonList } from '@/types'
 
 export const fetchPokemon = async (offset: number) => {
   const limit = 9
-  const { data } = await axios.get<PokemonList>(
-    `${POKEAPI_URL}/pokemon?limit=${limit}&offset=${offset}`
-  )
+  const url = `${POKEAPI_URL}/pokemon?limit=${limit}&offset=${offset}`
+
+  const { data } = await axios.get<PokemonList>(url)
   const result = {
     results: data.results,
     next: data.next,
