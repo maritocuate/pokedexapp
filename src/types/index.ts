@@ -1,1 +1,6 @@
-export type { GenericItem, PokemonResult, PokemonList } from './pokemon'
+export type {
+  GenericItem,
+  PokemonResult,
+  PokemonList,
+  PokemonDetails,
+} from './pokemon'

@@ -1,6 +1,5 @@
-import { fetchPokemonDetails } from '@/hooks/useFetchPokemon'
-import DetailsNotFound from '../components/details/DetailsNotFound'
-import CardDetails from '../components/details/CardDetails'
+import DetailCard from '../components/details/DetailCard'
+import { Container } from '@mui/material'
 
 interface detailsPageProps {
   params: {
@@ -11,10 +10,9 @@ interface detailsPageProps {
 export default async function Page({ params }: detailsPageProps) {
   const { pokeId } = params
 
-  const data = await fetchPokemonDetails(Number(pokeId))
-  if (!data) {
-    return <DetailsNotFound />
-  } else {
-    return <CardDetails />
-  }
+  return (
+    <Container maxWidth="md" sx={{ my: 4, minHeight: 'calc(100vh - 14rem)' }}>
+      <DetailCard id={Number(pokeId)} />
+    </Container>
+  )
 }

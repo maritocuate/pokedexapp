@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { POKEAPI_URL } from '@/app/config/pokemonUrl'
-import { PokemonList } from '@/types'
+import { PokemonDetails, PokemonList } from '@/types'
 
 export const fetchPokemon = async (offset: number) => {
   const limit = 9
@@ -14,10 +14,12 @@ export const fetchPokemon = async (offset: number) => {
   return result
 }
 
-export const fetchPokemonDetails = async (id: number) => {
+export const fetchPokemonDetails = async (
+  id: number
+): Promise<PokemonDetails | null> => {
   try {
     const url = `${POKEAPI_URL}/pokemon/${id}`
-    const { data } = await axios.get<PokemonList>(url)
+    const { data } = await axios.get<PokemonDetails>(url)
     return data
   } catch (error) {
     console.error('Error ', error)
