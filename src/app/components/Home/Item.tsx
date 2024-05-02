@@ -1,6 +1,7 @@
 import { POKEMON_ARTWORK_URL } from '@/app/config/pokemonUrl'
 import { PokemonResult } from '@/types'
 import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import Image from 'next/image'
 
 interface ItemProps {
   data: PokemonResult

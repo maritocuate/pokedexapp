@@ -3,6 +3,9 @@ import { PokemonDetails } from '@/types'
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
 import DetailsNotFound from './DetailsNotFound'
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon'
+import { ArrowBackIos } from '@mui/icons-material'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default async function DetailCard({ id }: { id: number }) {
   const data: PokemonDetails | null = await fetchPokemonDetails(id)
@@ -12,9 +15,17 @@ export default async function DetailCard({ id }: { id: number }) {
 
   return (
     <Box component="section">
-      <Typography variant="h1" className="capitalize flex items-center gap-1">
-        <CatchingPokemonIcon sx={{ fontSize: '3rem' }} />
-        {name}
+      <Typography variant="h1" className="flex items-center justify-between">
+        <div className="capitalize flex items-center gap-1">
+          <CatchingPokemonIcon sx={{ fontSize: '3rem' }} />
+          {name}
+        </div>
+        <Box className="flex items-center text-lg">
+          <Link href="/">
+            <ArrowBackIos className="text-lg" />
+            Go Back
+          </Link>
+        </Box>
       </Typography>
       <Box
         sx={{
@@ -30,10 +41,11 @@ export default async function DetailCard({ id }: { id: number }) {
             my: 4,
           }}
         >
-          <CardMedia
-            component="img"
-            src={data.sprites.other['official-artwork'].front_default}
+          <Image
             alt={name}
+            width={500}
+            height={500}
+            src={data.sprites.other['official-artwork'].front_default}
           />
           <CardContent>
             <Typography className="capitalize" variant="h6">
