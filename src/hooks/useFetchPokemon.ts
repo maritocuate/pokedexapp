@@ -13,3 +13,14 @@ export const fetchPokemon = async (offset: number) => {
   }
   return result
 }
+
+export const fetchPokemonDetails = async (id: number) => {
+  try {
+    const url = `${POKEAPI_URL}/pokemon/${id}`
+    const { data } = await axios.get<PokemonList>(url)
+    return data
+  } catch (error) {
+    console.error('Error ', error)
+    return null
+  }
+}

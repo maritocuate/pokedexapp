@@ -7,12 +7,12 @@ import {
   Typography,
 } from '@mui/material'
 
-export default function Page() {
+export default function CardDetails() {
   return (
     <Container maxWidth="md" sx={{ my: 4, minHeight: 'calc(100vh - 14rem)' }}>
       <Box component="section">
         <Typography variant="h1" sx={{ left: 0 }}>
-          Details
+          ID:
         </Typography>
         <Box
           sx={{
