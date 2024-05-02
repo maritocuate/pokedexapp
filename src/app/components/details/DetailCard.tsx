@@ -1,13 +1,6 @@
 import { fetchPokemonDetails } from '@/hooks/useFetchPokemon'
 import { PokemonDetails } from '@/types'
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Typography,
-} from '@mui/material'
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
 import DetailsNotFound from './DetailsNotFound'
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon'
 
