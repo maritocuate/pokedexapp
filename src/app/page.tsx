@@ -13,7 +13,6 @@ export default function Home() {
   const [offset, setOffset] = useState(0)
 
   const fetchData = async (index: number) => {
-    console.log('fetching -> ', index)
     try {
       const data = await fetchPokemon(index)
       setPokemonList(prevList => [

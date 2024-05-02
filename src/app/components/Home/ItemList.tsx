@@ -10,8 +10,8 @@ export default function ItemList({ dataList }: ItemListProps) {
   return (
     <Container>
       <Grid container spacing={2} className="flex justify-center">
-        {dataList.map((item: PokemonResult) => (
-          <Grid item xs={12} sm={6} md={4} key={item.name}>
+        {dataList.map((item: PokemonResult, index: number) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <Item data={item} />
           </Grid>
         ))}
