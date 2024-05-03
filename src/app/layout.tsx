@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from './components/Navbar'
 import './ui/globals.css'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { Box, ThemeProvider } from '@mui/material'
 import mainTheme from './ui/theme'
 import Footer from './components/Footer'
@@ -16,14 +17,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ThemeProvider theme={mainTheme}>
-      <html lang="en">
-        <body>
-          <Navbar />
-          <Box>{children}</Box>
-          <Footer />
-        </body>
-      </html>
-    </ThemeProvider>
+    <html lang="en">
+      <body>
+        <AppRouterCacheProvider options={{ key: 'css' }}>
+          <ThemeProvider theme={mainTheme}>
+            <Navbar />
+            <Box>{children}</Box>
+            <Footer />
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
+    </html>
   )
 }

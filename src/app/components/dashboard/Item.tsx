@@ -15,6 +15,7 @@ export default function Item({ data }: ItemProps) {
       <Link href={`/${name}`}>
         <CardMedia
           component="img"
+          alt={name}
           className="hover:scale-105 duration-100 ease-in-out"
           sx={{ height: '14rem' }}
           image={`${POKEMON_ARTWORK_URL}/${name}.jpg`}

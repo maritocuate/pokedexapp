@@ -5,7 +5,9 @@ import typography from './base/typography'
 
 const mainTheme = createTheme({
   typography: { ...typography },
-  palette: { ...colors },
+  palette: {
+    ...colors,
+  },
 })
 
 export default mainTheme

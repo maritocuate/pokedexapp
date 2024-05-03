@@ -22,12 +22,14 @@ export default async function DetailCard({ id }: { id: string }) {
           </IconButton>
           {name}
         </Typography>
-        <Box className="flex items-center text-lg">
-          <Link href="/">
-            <ArrowBackIos className="text-lg" />
-            Go Back
-          </Link>
-        </Box>
+        <Link href="/">
+          <Box className="flex items-center">
+            <ArrowBackIos sx={{ fontSize: '1.5rem' }} />
+            <Typography variant="body1" sx={{ fontSize: '1.5rem' }}>
+              Go Back
+            </Typography>
+          </Box>
+        </Link>
       </Box>
       <Box
         sx={{
