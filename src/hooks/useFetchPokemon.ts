@@ -15,7 +15,7 @@ export const fetchPokemon = async (offset: number) => {
 }
 
 export const fetchPokemonDetails = async (
-  id: number
+  id: string
 ): Promise<PokemonDetails | null> => {
   try {
     const url = `${POKEAPI_URL}/pokemon/${id}`

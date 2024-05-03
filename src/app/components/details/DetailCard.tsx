@@ -7,7 +7,7 @@ import { ArrowBackIos } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default async function DetailCard({ id }: { id: number }) {
+export default async function DetailCard({ id }: { id: string }) {
   const data: PokemonDetails | null = await fetchPokemonDetails(id)
   if (!data) return <DetailsNotFound />
 

@@ -15,7 +15,7 @@ export default async function Page({ params }: detailsPageProps) {
   return (
     <Container maxWidth="md" sx={{ my: 4, minHeight: 'calc(100vh - 14rem)' }}>
       <Suspense fallback={<DetailsSkeleton />}>
-        <DetailCard id={Number(pokeId)} />
+        <DetailCard id={pokeId} />
       </Suspense>
     </Container>
   )
