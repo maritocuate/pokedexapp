@@ -8,26 +8,24 @@ import { PokemonResult } from '@/types'
 import { fetchPokemon } from '@/hooks/useFetchPokemon'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
 import { ThumbnailSkeleton } from './ui/skeletons'
+import { usePokemonStore } from '@/store/pokemonStore'
 
 export default function Home() {
-  const [pokemonList, setPokemonList] = useState<PokemonResult[] | []>([])
   const [offset, setOffset] = useState(0)
+  const pokemonList = usePokemonStore(state => state.pokemonList)
+  const addPokemon = usePokemonStore(state => state.addPokemon)
 
-  const fetchData = useCallback(async (index: number) => {
+  const fetchData = async (index: number) => {
     try {
       const data = await fetchPokemon(index)
-      setPokemonList(prevList => [
-        ...prevList,
-        ...(data.results as PokemonResult[]),
-      ])
-
+      addPokemon(data.results as PokemonResult[])
       const urlParams = new URLSearchParams((data.next as string).split('?')[1])
       const newOffset = urlParams.get('offset')
       setOffset(Number(newOffset))
     } catch (error) {
       console.error('Error fetching Pokemon:', error)
     }
-  }, [])
+  }
 
   useEffect(() => {
     fetchData(offset)
