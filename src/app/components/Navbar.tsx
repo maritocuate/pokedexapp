@@ -1,5 +1,3 @@
-'use client'
-import React from 'react'
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material'
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon'
 import Link from 'next/link'
