@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { Box, Container } from '@mui/material'
-import WithSearchBar from './components/home/WithSearchBar'
-import ItemList from './components/home/ItemList'
+import WithSearchBar from './components/dashboard/WithSearchBar'
+import ItemList from './components/dashboard/ItemList'
 import { PokemonResult } from '@/types'
 import { fetchPokemon } from '@/hooks/useFetchPokemon'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
