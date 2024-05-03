@@ -15,18 +15,18 @@ export default async function DetailCard({ id }: { id: string }) {
 
   return (
     <Box component="section">
-      <Typography variant="h1" className="flex items-center justify-between">
-        <div className="capitalize flex items-center gap-1">
+      <Box className="flex flex-col md:flex-row items-center justify-between">
+        <Typography variant="h1" className="capitalize flex items-center gap-1">
           <CatchingPokemonIcon sx={{ fontSize: '3rem' }} />
           {name}
-        </div>
+        </Typography>
         <Box className="flex items-center text-lg">
           <Link href="/">
             <ArrowBackIos className="text-lg" />
             Go Back
           </Link>
         </Box>
-      </Typography>
+      </Box>
       <Box
         sx={{
           display: 'flex',
