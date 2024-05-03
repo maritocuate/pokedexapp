@@ -2,10 +2,11 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { Box, Container } from '@mui/material'
-import WithSearchBar from './components/Home/WithSearchBar'
-import ItemList from './components/Home/ItemList'
+import WithSearchBar from './components/home/WithSearchBar'
+import ItemList from './components/home/ItemList'
 import { PokemonResult } from '@/types'
 import { fetchPokemon } from '@/hooks/useFetchPokemon'
+import useInfiniteScroll from '@/hooks/useInfiniteScroll'
 
 export default function Home() {
   const [pokemonList, setPokemonList] = useState<PokemonResult[] | []>([])
@@ -31,21 +32,7 @@ export default function Home() {
     fetchData(offset)
   }, [])
 
-  // Add infinite scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight: number = window.innerHeight
-      const scrollTop: number = document.documentElement.scrollTop
-      const offsetHeight: number = document.documentElement.offsetHeight
-
-      if (windowHeight + scrollTop !== offsetHeight) return
-      fetchData(offset)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [offset])
+  useInfiniteScroll({ fetchData, offset })
 
   return (
     <main>
