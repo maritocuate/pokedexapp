@@ -7,6 +7,7 @@ import ItemList from './components/home/ItemList'
 import { PokemonResult } from '@/types'
 import { fetchPokemon } from '@/hooks/useFetchPokemon'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
+import { ThumbnailSkeleton } from './ui/skeletons'
 
 export default function Home() {
   const [pokemonList, setPokemonList] = useState<PokemonResult[] | []>([])
@@ -41,7 +42,9 @@ export default function Home() {
         className="my-4"
         sx={{ minHeight: 'calc(100vh - 14rem)' }}
       >
-        {!pokemonList.length ? null : (
+        {!pokemonList.length ? (
+          <ThumbnailSkeleton />
+        ) : (
           <WithSearchBar>
             <ItemList dataList={pokemonList} />
           </WithSearchBar>

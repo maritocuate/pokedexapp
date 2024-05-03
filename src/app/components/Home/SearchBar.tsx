@@ -1,10 +1,4 @@
-import {
-  Button,
-  FormGroup,
-  Icon,
-  InputAdornment,
-  InputBase,
-} from '@mui/material'
+import { FormGroup, InputAdornment, InputBase } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
 export default function SearchBar() {

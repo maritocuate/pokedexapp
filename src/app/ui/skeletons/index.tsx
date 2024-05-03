@@ -2,10 +2,26 @@ import {
   Box,
   Card,
   CardContent,
-  CardMedia,
+  Container,
+  Grid,
   Skeleton,
   Typography,
 } from '@mui/material'
+import ThumbSkeleton from './ThumbSkeleton'
+
+export function ThumbnailSkeleton() {
+  const numThumbnails = 6
+
+  return (
+    <Container className="flex flex-col items-center my-24">
+      <Grid container spacing={2} className="flex justify-center">
+        {Array.from({ length: numThumbnails }).map((_, index) => (
+          <ThumbSkeleton key={index} />
+        ))}
+      </Grid>
+    </Container>
+  )
+}
 
 export function DetailsSkeleton() {
   return (
