@@ -1,6 +1,6 @@
 import { fetchPokemonDetails } from '@/hooks/useFetchPokemon'
 import { PokemonDetails } from '@/types'
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Box, Card, CardContent, IconButton, Typography } from '@mui/material'
 import DetailsNotFound from './DetailsNotFound'
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon'
 import { ArrowBackIos } from '@mui/icons-material'
@@ -17,7 +17,9 @@ export default async function DetailCard({ id }: { id: string }) {
     <Box component="section">
       <Box className="flex flex-col md:flex-row items-center justify-between">
         <Typography variant="h1" className="capitalize flex items-center gap-1">
-          <CatchingPokemonIcon sx={{ fontSize: '3rem' }} />
+          <IconButton disabled>
+            <CatchingPokemonIcon sx={{ fontSize: '3rem' }} />
+          </IconButton>
           {name}
         </Typography>
         <Box className="flex items-center text-lg">
@@ -46,6 +48,7 @@ export default async function DetailCard({ id }: { id: string }) {
             width={500}
             height={500}
             src={data.sprites.other['official-artwork'].front_default}
+            priority
           />
           <CardContent>
             <Typography className="capitalize" variant="h6">
