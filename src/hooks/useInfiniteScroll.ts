@@ -7,10 +7,15 @@ interface useInfiniteScrollProps {
 
 const useInfiniteScroll = ({ fetchData, offset }: useInfiniteScrollProps) => {
   useEffect(() => {
+    console.log('1.UE')
     const handleScroll = () => {
+      console.log('2.Scroll')
       const windowHeight = window.innerHeight
       const scrollTop = document.documentElement.scrollTop
       const offsetHeight = document.documentElement.offsetHeight
+      console.log('windowHeight: ' + windowHeight)
+      console.log('scrollTop: ' + scrollTop)
+      console.log('offsetHeight: ' + offsetHeight)
 
       if (windowHeight + scrollTop !== offsetHeight) return
       fetchData(offset)
