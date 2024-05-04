@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "seed": "node -r dotenv/config ./scripts/seed.js"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -18,7 +19,9 @@
     "@mui/material": "^5.15.0",
     "@mui/material-nextjs": "^5.15.0",
     "@next/env": "^14.2.3",
+    "@vercel/postgres": "^0.8.0",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
