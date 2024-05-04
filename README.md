@@ -1,6 +1,7 @@
 # PokedexApp
 
 Web application that shows a list of Pokemon with an infinite scroll. each one has detailed information about their abilities and other stuff.
+The apps state management is powered by **_Zustand_**, **_Material UI_** for component design and **_TailwindCSS_** for style adjustments.
 
 ![screenshot](/public/screenshot.png?raw=true)
 ![screenshot](/public/screenshot2.png?raw=true)
