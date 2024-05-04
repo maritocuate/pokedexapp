@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: './sitemap.xml',
+    sitemap: 'https://pokedexapp-ecru.vercel.app/sitemap.xml',
   }
 }
