@@ -13,7 +13,10 @@ export function ThumbnailSkeleton() {
   const numThumbnails = 6
 
   return (
-    <Container className="flex flex-col items-center my-24">
+    <Container
+      className="flex flex-col items-center my-24"
+      sx={{ width: '95%' }}
+    >
       <Grid container spacing={2} className="flex justify-center">
         {Array.from({ length: numThumbnails }).map((_, index) => (
           <ThumbSkeleton key={index} />
